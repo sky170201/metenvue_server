@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loginreg :show="show" :isRight="isRight" @close="close"></loginreg>
     <div id="fix">
       <ul>
           <li class="li1">
@@ -92,9 +93,9 @@
                   </div>
               </div>
               <div class="info_right">
-                  <span><a class="ira1" href="">注册</a></span>
+                  <span><a class="ira1" href="javscript:;" @click="changeNone(2)">注册</a></span>
                   <em></em>
-                  <span><a class="ira2" href="">登录</a></span>
+                  <span><a class="ira2" href="javscript:;"  @click="changeNone(1)">登录</a></span>
               </div>
               <div class="info_tel">
                   <img src="image/new-hd-tel-icon.png" alt="">
@@ -123,7 +124,7 @@
                                   <i>B</i><a href="">北京</a>
                               </li>
                               <li>
-                                  <i>C</i><a href="">长沙</a><a href="">成都</a></span><a href="">重庆</a>
+                                  <i>C</i><a href="">长沙</a><a href="">成都</a><a href="">重庆</a>
                               </li>
                               <li>
                                   <i>D</i><a href="">东莞</a><a href="">大连</a>
@@ -275,11 +276,147 @@
   </div>
 </template>
 <script>
+import loginreg from './login_reg.vue'
 export default {
-  
+  components:{loginreg},
+  data(){
+      return{
+          show:1,
+          isRight:false,
+      }
+  },
+  methods:{
+    changeNone(n){
+        this.isRight=true;
+        this.show=n
+    },
+    close(){
+        this.isRight=false;
+    },
+  },
 }
 </script>
 <style>
+/* 登录注册样式 */
+/* .hideRegLog1{
+  display: block;
+}
+.hideRegLog{
+  display: none;
+} */
+.maskDiv{
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#000;
+  opacity:0.6;
+  z-index:1999;
+}
+.reglogDiv{
+  width:340px;
+  height:300px;
+  position:fixed;
+  top:50%;
+  left:50%;
+  margin-left:-170px;
+  margin-top:-150px;
+  border-radius:5px;
+  padding:20px;
+  z-index: 2000;
+  box-shadow:-3px 3px 5px;
+  background:#fff;
+  box-sizing:content-box;
+}
+.close{
+  width:17px;
+  height:17px;
+  position:absolute;
+  top:25px;
+  right:25px;
+  background:url(/image/closeIcon.png) no-repeat;
+}
+.tabul{
+  width:100%;
+  height:58px;
+  line-height: 58px;
+  padding-left:110px;
+  border-bottom:1px solid #999;
+}
+.tabul>li{
+  float:left;
+  font-size:18px;
+  color:#999;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right:30px;
+}
+.reg{
+  width:298px;
+  margin:auto;
+  text-align:center; 
+  position: relative;
+}
+.reg>input{
+  height:40px;
+  line-height:40px;
+  color:#ccc;
+  font-size:16px;
+  border:1px solid #999;
+  margin:auto;
+  margin-top:30px;
+  width:100%;
+  padding-left:44px;
+  border-radius:3px;
+}
+.reginput1{
+  background:url(/image/telPhoneIcon.png) no-repeat 17px 9px;
+}
+.reginput2{
+  background:url(/image/codeIcon.png) no-repeat 17px 9px;
+}
+.loginput1{
+  background:url(/image/nameIcon.png) no-repeat 17px 9px;
+}
+.loginput2{
+  background:url(/image/telPhoneIcon.png) no-repeat 17px 9px;
+}
+.regbtn{
+  position: absolute;
+  top:30px;
+  right:0px;
+  width:98px;
+  background:#86c138;
+  color:#fff;
+  font-size: 16px;
+  text-align:center;
+  border-radius:3px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+}
+.regbtn1{
+  width:298px;
+  height:40px;
+  line-height: 40px;
+  text-align:center;
+  border-radius:3px;
+  font-size:20px;
+  color:#fff;
+  background:#86c138;
+  cursor: pointer;
+  margin:30px 0 15px;
+}
+.reglogDiv .ass_box{
+  top:8px;
+  left:-20px;
+}
+.tabul>.navOn{
+  font-size: 24px;
+  color:#86c138;
+}
+/* 首页内容样式 */
   #fix{
     position:fixed;width:65px;top:22%;right:0px;
     background:#86c138;z-index:9988;font-size:12px;color:#fff;}
