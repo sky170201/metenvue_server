@@ -632,15 +632,20 @@ export default {
     position:absolute;bottom:0px;left:0px;}
 .index2{position:relative;color:#86c138;}
 .index2>span{
-    display:none;
-    width:95px;height:5px;
-    background:#86c138;margin-left:16px;
-    position:absolute;bottom:0px;left:0px;}
+    width:0px;
+    height:5px;
+    background:#86c138;
+    position:absolute;
+    bottom:0px;
+    left:63px;
+    transition:all 0.1s linear;
+}
 .index2:hover .nav_top_li{
     color:#86c138;
 }
 .index2:hover .index_border{
-    display:block;
+    width:95px;
+    left:16px;
 }
 
 .nav_hidlist_cit{
