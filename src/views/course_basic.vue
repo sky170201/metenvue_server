@@ -517,7 +517,7 @@
                   <span>宏发中心</span>
                   <span class="freelis">免费试听</span>
                 </div>
-                <div class="centerDel" v-show="showList[0].isChose">
+                <div class="centerDel" :style="{height:showList[0].isChose}">
                   <p>地 &nbsp;&nbsp;&nbsp;址：<b>深圳市宝安区宏发中心大厦东面1-2楼</b></p>
                   <p>开放时间：10:00-21:00</p>
                 </div>
@@ -527,7 +527,7 @@
                   <span>科学馆中心</span>
                   <span class="freelis">免费试听</span>
                 </div>
-                <div class="centerDel"  v-show="showList[1].isChose">
+                <div class="centerDel"  :style="{height:showList[1].isChose}">
                   <p>地 &nbsp;&nbsp;&nbsp;址：<b>深圳市福田区深南中路中核大厦（原深圳购书中心）5楼</b></p>
                   <p>开放时间：10:00-21:00</p>
                 </div>
@@ -537,7 +537,7 @@
                   <span>深国投中心</span>
                   <span class="freelis">免费试听</span>
                 </div>
-                <div class="centerDel"  v-show="showList[2].isChose">
+                <div class="centerDel"  :style="{height:showList[2].isChose}">
                   <p>地 &nbsp;&nbsp;&nbsp;址：<b>深圳市福田区农林路69号印力中心1号写字楼10楼美联英语</b></p>
                   <p>开放时间：10:00-21:00</p>
                 </div>
@@ -547,7 +547,7 @@
                   <span>CBD中心</span>
                   <span class="freelis">免费试听</span>
                 </div>
-                <div class="centerDel" v-show="showList[3].isChose">
+                <div class="centerDel" :style="{height:showList[3].isChose}">
                   <p>地 &nbsp;&nbsp;&nbsp;址：<b>深圳市福田区福华三路88号时代财富大厦3楼</b></p>
                   <p>开放时间：10:00-21:00</p>
                 </div>
@@ -570,10 +570,10 @@ export default {
   data(){
     return{
       showList:[ //"手风琴" 变量
-        {isChose:true},
-        {isChose:false},
-        {isChose:false},
-        {isChose:false},
+        {isChose:"63px"},
+        {isChose:0},
+        {isChose:0},
+        {isChose:0},
       ],
       sel:true,
       i:1,
@@ -599,9 +599,9 @@ export default {
        var length=this.showList.length;
        for(var i=0;i<length;i++){
          if(i==n){
-           this.showList[i].isChose=true;
+           this.showList[i].isChose="63px";
          }else{
-           this.showList[i].isChose=false;
+           this.showList[i].isChose=0;
          }
        }
      },
@@ -746,6 +746,7 @@ export default {
   }
   .ccpCenter>ul{
     margin-top:30px;
+    height:308px;
   }
   .ccpCenter>ul>li{
     border-top:1px dashed #d8d8d8;
@@ -768,7 +769,9 @@ export default {
     background:url(/image/course_basic/part7-tr-icon.png) no-repeat right center;
   }
   .centerDel{
-    transition:all 0.5s linear;
+    height:0;
+    overflow: hidden;
+    transition:all 0.3s linear;
   }
   .centerDel>p{
     margin-bottom:15px;
