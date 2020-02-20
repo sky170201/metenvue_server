@@ -5,6 +5,7 @@ import Index from '../views/Index'
 import School from '../views/school'
 import Teacher from '../views/teacher'
 import Tuition from '../views/tuition'
+import coursebasic from '../views/course_basic'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,7 @@ const router = new VueRouter({
     {path:"/school",component:School},
     {path:"/teacher",component:Teacher},
     {path:'/tuition',component:Tuition},
+    {path:'/course_basic',component:coursebasic},
   ]
 })
 

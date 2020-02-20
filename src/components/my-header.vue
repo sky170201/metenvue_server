@@ -1,6 +1,37 @@
 <template>
-  <div>
-    <loginreg :show="show" :isRight="isRight" @close="close"></loginreg>
+    <div>
+        <div v-show="isRight">
+            <div class="maskDiv"></div>  
+            <div class="reglogDiv">
+                <span class="close" @click="close"></span>
+                <ul class="tabul">
+                    <li @click="change(1)" :class="{navOn:show=='1'}">登录</li>
+                    <li @click="change(2)" :class="{navOn:show=='2'}">注册</li>
+                </ul>
+                <div v-if="show==1" class="reg">
+                    <input class="reginput1" type="text" placeholder="请输入您的手机号" maxlength="11"><span class="regbtn">获取验证码</span>
+                    <input class="reginput2" type="text" placeholder="请输入短信验证码" >
+                    <div class="regbtn1">登 录</div>
+                    <div class="tip_info">
+                    <span>
+                        <em @click="chosen" :class="{bgchonclick:selected}" class="ass_box"></em>
+                        同意<a href="" target="_blank">《美联用户隐私保护协议》</a>
+                    </span>
+                    </div>
+                </div>
+                <div v-else class="reg">
+                <input class="reginput1 loginput1" type="text" placeholder="请输入姓名/昵称">
+                <input class="reginput2 loginput2" type="text" placeholder="请输入您的手机号" maxlength="11">
+                <div class="regbtn1">注 册</div>
+                <div class="tip_info">
+                    <span>
+                        <em @click="chosen" :class="{bgchonclick:selected}" class="ass_box"></em>
+                        同意<a href="" target="_blank">《美联用户隐私保护协议》</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="fix">
       <ul>
           <li class="li1">
@@ -181,7 +212,7 @@
                       <span class="index_border"></span>
                       <div class="nav_hidlist_cou">
                           <ul>
-                              <li><a href="">零基础英语</a></li>
+                              <li><router-link to="/course_basic">零基础英语</router-link></li>
                               <li><a href="">英语口语</a></li>
                               <li><a href="">个人储备英语</a></li>
                               <li><a href="">职场英语</a></li>
@@ -276,16 +307,21 @@
   </div>
 </template>
 <script>
-import loginreg from './login_reg.vue'
 export default {
-  components:{loginreg},
   data(){
       return{
-          show:1,
-          isRight:false,
+        show:1,
+        isRight:false,
+        selected:true,
       }
   },
   methods:{
+    chosen(){
+      this.selected=!this.selected;
+    },
+    change(i){
+      this.show=i;
+    },
     changeNone(n){
         this.isRight=true;
         this.show=n
@@ -298,12 +334,6 @@ export default {
 </script>
 <style>
 /* 登录注册样式 */
-/* .hideRegLog1{
-  display: block;
-}
-.hideRegLog{
-  display: none;
-} */
 .maskDiv{
   width:100%;
   height:100%;

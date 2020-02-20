@@ -55,6 +55,7 @@ Vue.directive("click1",{
     }
   }
 })
+
 new Vue({
   router,
   store,
