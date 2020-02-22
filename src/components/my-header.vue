@@ -208,21 +208,21 @@
                       <span></span>
                   </li>
                   <li class="index2 index_cou">
-                      <a class="nav_top_li" href="javascript:;">课程设置</a>
+                      <a class="nav_top_li" href="javascript:;" style="cursor:inherit">课程设置</a>
                       <span class="index_border"></span>
                       <div class="nav_hidlist_cou">
                           <ul>
                               <li><router-link to="/course_basic">零基础英语</router-link></li>
-                              <li><a href="">英语口语</a></li>
-                              <li><a href="">个人储备英语</a></li>
-                              <li><a href="">职场英语</a></li>
-                              <li><a href="">学生英语</a></li>
+                              <li><router-link to="/course_basic">英语口语</router-link></li>
+                              <li><router-link to="/course_basic">个人储备英语</router-link></li>
+                              <li><router-link to="/course_basic">职场英语</router-link></li>
+                              <li><router-link to="/course_basic">学生英语</router-link></li>
                           </ul>
                           <ul>
-                              <li><a href="">在线英语</a></li>
-                              <li><a href="">青少英语</a></li>
-                              <li><a href="">雅思IELTS</a></li>
-                              <li><a href="">托福TOTEFL</a></li>
+                              <li><router-link to="/course_basic">在线英语</router-link></li>
+                              <li><router-link to="/course_basic">青少英语</router-link></li>
+                              <li><router-link to="/course_basic">雅思IELTS</router-link></li>
+                              <li><router-link to="/course_basic">托福TOTEFL</router-link></li>
                           </ul>
                       </div>
                   </li>

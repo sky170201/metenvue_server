@@ -9,6 +9,15 @@ Vue.component("my-footer",myFooter);
 
 Vue.config.productionTip = false
 
+// 引入axios库
+import axios from "axios"
+// 配置访问服务器寄出路径
+axios.defaults.baseURL="http://127.0.0.1:4000/"
+// 配置保存session数据
+axios.defaults.withCredentials=true;
+// 注册
+Vue.prototype.axios=axios;
+
 Vue.directive("click",{
   inserted(domElem){
     domElem.onclick=function(){

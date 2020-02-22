@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="course_banner">
-      <img src="/image/course_basic/zer-changeBanner.jpg">
+      <img :src="`http://127.0.0.1:4000/${others.banner}`">
       <div class="cou_title">
         <div class="cou_nav">
           <ul>
@@ -36,29 +36,32 @@
         <div class="cou_content">
           <div class="cou_carousel">
             <div class="bigpic">
-              <img :src="`/image/course_basic/ban-basic0${i}.jpg`">
+              <img v-show="i==1" :src="`http://127.0.0.1:4000/${imgList.img1}`">
+              <img v-show="i==2" :src="`http://127.0.0.1:4000/${imgList.img2}`">
+              <img v-show="i==3" :src="`http://127.0.0.1:4000/${imgList.img3}`">
+              <img v-show="i==4" :src="`http://127.0.0.1:4000/${imgList.img4}`">
             </div>
             <ul class="smapic">
               <li class="liBorder" :class="{changeColor:i==1}">
-                <img src="/image/course_basic/ban-basic01.jpg">
+                <img :src="`http://127.0.0.1:4000/${imgList.img1}`">
               </li>
               <li class="liBorder" :class="{changeColor:i==2}">
-                <img src="/image/course_basic/ban-basic02.jpg">
+                <img :src="`http://127.0.0.1:4000/${imgList.img2}`">
               </li>
               <li class="liBorder" :class="{changeColor:i==3}">
-                <img src="/image/course_basic/ban-basic03.jpg">
+                <img :src="`http://127.0.0.1:4000/${imgList.img3}`">
               </li>
               <li class="liBorder" :class="{changeColor:i==4}">
-                <img src="/image/course_basic/ban-basic04.jpg">
+                <img :src="`http://127.0.0.1:4000/${imgList.img4}`">
               </li>
             </ul>
             <span class="car_left" @click="subI" @mouseenter="topTimer" @mouseleave="startTimer"></span>
             <span class="car_right" @click="addI" @mouseenter="topTimer" @mouseleave="startTimer"></span>
           </div>
           <div class="cou_info">
-            <h3>零基础英语</h3>
+            <h3>{{others.title}}</h3>
             <div class="cou_first" @click="openMask">
-              <span>预约礼</span>
+              <span :style="`background:url(http://127.0.0.1:4000/${others.icon1})`">预约礼</span>
               <ul>
                 <li>· 1对1英语学习规划与指导</li>
                 <li>· 500主题试听课任选1节</li>
@@ -68,12 +71,12 @@
             <div class="cou_last">
               <div>课程特色</div>
               <ul>
-                <li>免费试听</li>
-                <li>免费水平测试</li>
-                <li>纠正口音外教</li>
-                <li>场景演练</li>
-                <li>即学即用</li>
-                <li>小组分工交流</li>
+                <li :style="`background:url(http://127.0.0.1:4000/${others.icon2}) no-repeat 0 2px;`">{{others.tit1}}</li>
+                <li :style="`background:url(http://127.0.0.1:4000/${others.icon2}) no-repeat 0 2px;`">{{others.tit2}}</li>
+                <li :style="`background:url(http://127.0.0.1:4000/${others.icon2}) no-repeat 0 2px;`">{{others.tit3}}</li>
+                <li :style="`background:url(http://127.0.0.1:4000/${others.icon2}) no-repeat 0 2px;`">{{others.tit4}}</li>
+                <li :style="`background:url(http://127.0.0.1:4000/${others.icon2}) no-repeat 0 2px;`">{{others.tit5}}</li>
+                <li :style="`background:url(http://127.0.0.1:4000/${others.icon2}) no-repeat 0 2px;`">{{others.tit6}}</li>
               </ul>
             </div>
             <div class="cou_btn">
@@ -567,6 +570,7 @@
 </template>
 <script>
 export default {
+  props:["lid"],
   data(){
     return{
       showList:[ //"手风琴" 变量
@@ -587,6 +591,8 @@ export default {
       fixn:{position:""}, //固定导航条变量
       showFree:false,
       timer:"",  //周期性定时器变量
+      imgList:{},//获取服务器端请求来的图片数据
+      others:{}
     }
   },
   mounted(){
@@ -690,6 +696,17 @@ export default {
         this.i=1;
       }
     }, 2000);
+    // 发送axios请求获取服务器端数据
+    this.axios.get("course_basic_img",{params:{lid:1}}).then(res=>{
+      // console.log(res.data.data);
+      this.imgList=res.data.data;
+      console.log(this.imgList);
+    }),
+    this.axios.get("course_basic_other",{params:{lid:1}}).then(res=>{
+      // console.log(res.data.data);
+      this.others=res.data.data;
+      console.log(this.others);
+    })
   }
 }
 </script>
@@ -1549,7 +1566,7 @@ export default {
     font-weight: 700;
     font-size:18px;
     cursor: pointer;
-    background:url(/image/course_basic/cou-icon01.png)
+    
   }
   .cou_first>ul{
     float: left;
